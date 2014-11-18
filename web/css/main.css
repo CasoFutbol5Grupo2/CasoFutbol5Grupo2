@@ -1,0 +1,61 @@
+body{
+    background:url('../img/Fondo.jpg') no-repeat fixed center; 
+    background-size: 100% 100%;
+   
+    
+    
+}
+
+
+form {
+    background: rgba(50,50,50,0.5);
+    border-radius: 8px;
+    
+    text-shadow: 1px 1px 0 white,
+                    -1px -1px white,
+                   1px -1px white,
+                  -1px 1px white,
+                   0 1px white,
+                   1px 0 white,
+                  -1px 0 white,
+                   0 -1px white;
+    }
+
+    .org > h1{
+        color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    text-shadow: 1px 1px 0 white,
+                  -1px -1px white,
+                   1px -1px white,
+                  -1px 1px white,
+                   0 1px white,
+                   1px 0 white,
+                  -1px 0 white,
+                   0 -1px white;
+    }    
+    
+    .org > h3{
+        color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    text-shadow: 1px 1px 0 white,
+                  -1px -1px white,
+                   1px -1px white,
+                  -1px 1px white,
+                   0 1px white,
+                   1px 0 white,
+                  -1px 0 white,
+                   0 -1px white;
+    }
+    
+    .blanco{
+        text-shadow: 1px 1px 0 white,
+                  -1px -1px white,
+                   1px -1px white,
+                  -1px 1px white,
+                   0 1px white,
+                   1px 0 white,
+                  -1px 0 white,
+                   0 -1px white;
+    }

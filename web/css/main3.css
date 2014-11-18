@@ -1,0 +1,13 @@
+body{
+    background:url('../img/registrate.jpg') no-repeat fixed center; 
+    background-size: 100% 100%;
+   
+    
+}
+
+
+form {
+    background: rgba(50,50,50,0.3);
+    border-radius: 8px;
+    }
+
