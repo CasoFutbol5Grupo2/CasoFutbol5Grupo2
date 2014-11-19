@@ -23,16 +23,27 @@ public class CallbackServlet extends HttpServlet {
         try {
             System.out.println(oauthCode);
             facebook.getOAuthAccessToken(oauthCode);
+            Jugador j;
+            if(mongo.buscarJugadorCorreo(facebook.getMe().getEmail())==null){
+                j = new Jugador();
+                j.setCorreo(facebook.getMe().getEmail());
+                j.setNombre(facebook.getName());
+                j.setFbid(facebook.getId());
+                j.setImagen(facebook.getPictureURL(PictureSize.large).toString());
+                
+                mongo.crearJugador(j);
+            }else{
+                j = mongo.buscarJugadorCorreo(facebook.getMe().getEmail());
+                j.setNombre(facebook.getName());
+                j.setFbid(facebook.getId());
+                j.setImagen(facebook.getPictureURL(PictureSize.large).toString());
+                mongo.actualizarJugador(j);
+                request.getSession().setAttribute("partidosOrganizados",mongo.partidosAdmin(j));
+            }
+            request.getSession().setAttribute("actual",j);
             
-            Jugador j = new Jugador();
-            
-            j.setCorreo(facebook.getMe().getEmail());
-            j.setNombre(facebook.getName());
-            j.setFbid(facebook.getId());
-            j.setImagen(facebook.getPictureURL().toString());
-            mongo.crearJugador(j);
             request.getSession().setAttribute("fName", facebook.getName());
-            request.getSession().setAttribute("pic", facebook.getPictureURL(PictureSize.large));
+            
             
         } catch (FacebookException e) {
             throw new ServletException(e);

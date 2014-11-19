@@ -12,6 +12,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>edu.ulima.servlets.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MiPerfilServlet</servlet-name>
+        <servlet-class>edu.ulima.servlets.MiPerfilServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CallbackServlet</servlet-name>
         <url-pattern>/callback</url-pattern>
