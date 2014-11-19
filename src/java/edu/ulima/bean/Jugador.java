@@ -8,6 +8,7 @@ public class Jugador implements Serializable{
     private String correo;
     private String nombre;
     private String fbid;
+    private String imagen;
     private int partGanados;
     private int partPerdidos;
     private float coeficiente;
@@ -70,5 +71,14 @@ public class Jugador implements Serializable{
     public void setCoeficiente(float coeficiente) {
         this.coeficiente = coeficiente;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
     
 }

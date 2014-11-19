@@ -1,0 +1,10 @@
+connected to: 127.0.0.1
+2014-11-18T20:32:47.746-0500 DATABASE: casofutbol	 to 	dump\casofutbol
+2014-11-18T20:32:47.746-0500 	casofutbol.system.indexes to dump\casofutbol\system.indexes.bson
+2014-11-18T20:32:47.746-0500 		 2 documents
+2014-11-18T20:32:47.746-0500 	casofutbol.jugador to dump\casofutbol\jugador.bson
+2014-11-18T20:32:47.746-0500 		 2 documents
+2014-11-18T20:32:47.746-0500 	Metadata for casofutbol.jugador to dump\casofutbol\jugador.metadata.json
+2014-11-18T20:32:47.746-0500 	casofutbol.partido to dump\casofutbol\partido.bson
+2014-11-18T20:32:47.746-0500 		 2 documents
+2014-11-18T20:32:47.746-0500 	Metadata for casofutbol.partido to dump\casofutbol\partido.metadata.json

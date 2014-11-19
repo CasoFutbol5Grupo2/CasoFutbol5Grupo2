@@ -11,10 +11,12 @@ public class Partido implements Serializable{
     private String fecha;
     private List<Jugador> invitados;
     private List<Jugador> equipo1;
+    private int goleseq1;
     private List<Jugador> equipo2;
+    private int goleseq2;
     private String estado;
     private String hora;
-
+    
     public Partido() {
     }
 
@@ -88,6 +90,22 @@ public class Partido implements Serializable{
 
     public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    public int getGoleseq1() {
+        return goleseq1;
+    }
+
+    public void setGoleseq1(int goleseq1) {
+        this.goleseq1 = goleseq1;
+    }
+
+    public int getGoleseq2() {
+        return goleseq2;
+    }
+
+    public void setGoleseq2(int goleseq2) {
+        this.goleseq2 = goleseq2;
     }
     
     
