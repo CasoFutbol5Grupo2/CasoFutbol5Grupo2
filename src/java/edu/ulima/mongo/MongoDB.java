@@ -8,13 +8,13 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
-import edu.ulima.bean.Jugador;
-import edu.ulima.bean.Partido;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import edu.ulima.bean.Jugador;
+import edu.ulima.bean.Partido;
 
 
 public class MongoDB {
@@ -327,6 +327,28 @@ public class MongoDB {
             }
          return lista;
    }
+   
+    public List<Partido> partidosDisponibles(){
+       this.colPartido();
+    List<Partido> lista = new ArrayList<>();
+            
+           // BasicDBObject query = new BasicDBObject();
+            BasicDBObject existe = new BasicDBObject()
+                    .append("estado",  "disponible");
+                    
+           
+            System.out.println( existe.toString() );    
+                        
+                   
+            DBCursor cursor = coll1.find(existe);
+            while ( cursor.hasNext() ) {
+                DBObject o = cursor.next();
+                Partido partido = this.parsePartido(o);
+                lista.add(partido);
+                
+            }
+         return lista;
+   }
     
    //Ver los Partidos donde participa el jugador
    //(excluyendo los q administra - ver "if" en el loop para modificar esto)
@@ -428,6 +450,7 @@ public class MongoDB {
             
             cond.add( new BasicDBObject("fecha",fecha) );
             cond.add( new BasicDBObject("hora", hora) );
+            cond.add( new BasicDBObject("estado", "disponible") );
             
             query.put("$and",cond);
        
@@ -445,5 +468,26 @@ public class MongoDB {
     
     
     
+    }
+    
+    public List<Partido> buscarPartidoporFecha(String fecha){
+            this.colPartido();
+            List<Partido> lista = new ArrayList<>();
+            BasicDBObject query = new BasicDBObject();
+                        
+            List<BasicDBObject> cond = new ArrayList<BasicDBObject>();
+            
+            cond.add( new BasicDBObject("fecha",fecha) );
+            cond.add( new BasicDBObject("estado","disponible") );
+            
+            query.put("$and",cond);
+       
+            DBCursor cursor = coll1.find(query);
+            while ( cursor.hasNext() ) {
+                DBObject o = cursor.next();
+               Partido partido = this.parsePartido(o);
+                lista.add(partido);
+            }
+            return lista;
     }
 }

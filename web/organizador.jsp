@@ -31,7 +31,7 @@
                 <a>Partidos Disponibles</a></div>    
 
             <div class="medium-2 columns"><br>
-                <a>Reservar cancha</a></div>
+                <a href="reserva.jsp">Reservar cancha</a></div>
 
             <div class="medium-2 columns"><br>
                 <a href="perfil.jsp">Mi Perfil</a></div>

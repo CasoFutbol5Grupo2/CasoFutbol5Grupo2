@@ -1,9 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="edu.ulima.bean.Jugador"%>
+<%@page import="edu.ulima.bean.Partido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>    
     <head>
-        <c:set var="partido" scope="session" value="${sessionScope.detallePartido}"/>
+        <c:set var="partido" scope="session" value="${sessionScope.partido}"/>
         <c:set var="msjInscripcion" scope="session" value="${sessionScope.msjInscripcion}"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,22 +15,37 @@
         <link rel="stylesheet" href="css/main.css" />
         <title>.:Partido:.</title>
         
-        <jsp:useBean id="Partido" class="ulima.edu.clases.Partido"/>  
-        <jsp:useBean id="Jugador" class="ulima.edu.clases.Jugador"/>
+        <jsp:useBean id="Partido" class="edu.ulima.bean.Partido"/>  
+        <jsp:useBean id="Jugador" class="edu.ulima.bean.Jugador"/>
         
         <%
             Partido p = (Partido)session.getAttribute("partido"); 
-            List<Jugador> jugadores = p.getJugadores();
+            List<Jugador> invitados = p.getInvitados();
+            List<Jugador> equipo1 = p.getEquipo1();
+            List<Jugador> equipo2 = p.getEquipo2();
             System.out.println("p"+p);
         %>
         
         <script type="text/javascript">
             
             function guardar(){      
-                var listaJ = '<%=jugadores%>';
-                for(int i=0; i<listaJ.size(); i++){
-                    var eq = document.form.i[document.form.i.selectedIndex].value; 
-                    $.get("servletGuardar",{equipo:eq});
+                var listaInv = '<%=invitados%>';
+                for(int i=0; i<listaInv.size(); i++){
+                    var id = listaInv.get(i).getId();
+                    var eq = document.form.id[document.form.id.selectedIndex].value; 
+                    $.get("guardarPartidoServlet",{equipo:eq, jugador:id});
+                }
+                var listaEq1 = '<%=equipo1%>';
+                for(int i=0; i<listaEq1.size(); i++){
+                    var id = listaEq1.get(i).getId();
+                    var eq = document.form.id[document.form.id.selectedIndex].value; 
+                    $.get("guardarPartidoServlet",{equipo:eq, jugador:id});
+                }
+                var listaEq2 = '<%=equipo2%>';
+                for(int i=0; i<listaEq2.size(); i++){
+                    var id = listaEq2.get(i).getId();
+                    var eq = document.form.id[document.form.id.selectedIndex].value; 
+                    $.get("guardarPartidoServlet",{equipo:eq, jugador:id});
                 }
             }
             
@@ -80,19 +98,43 @@
                 <br>
             <div class="row">
                 <center>
-                    <form action="servletIniciar" method="POST" id="form">
+                    <form action="iniciarPartidoServlet" method="POST" id="form">
                         <table>
                             <tr>
                                 <td>Nombre</td>
                                 <td>Coeficiente de Partidos Ganados</td>
                                 <td>Equipo</td> 
                             </tr>
-                            <c:forEach var="i" items="${partido.jugadores}">
+                            <c:forEach var="i" items="${partido.invitados}">
                                 <tr>
                                     <td>${i.nombre}&nbsp;${i.apellido}</td>
                                     <td></td> 
                                     <td>
-                                        <select name="${i}">
+                                        <select name="${i.id}" id="${i.id}">
+                                            <option value="1">Equipo 1</option>
+                                            <option value="2">Equipo 2</option>
+                                        </select> 
+                                    </td>
+                                </tr>            
+                            </c:forEach>
+                                <c:forEach var="i" items="${partido.equipo1}">
+                                <tr>
+                                    <td>${i.nombre}&nbsp;${i.apellido}</td>
+                                    <td></td> 
+                                    <td>
+                                        <select name="${i.id}" id="${i.id}">
+                                            <option value="1">Equipo 1</option>
+                                            <option value="2">Equipo 2</option>
+                                        </select> 
+                                    </td>
+                                </tr>            
+                            </c:forEach>
+                                <c:forEach var="i" items="${partido.equpo2}">
+                                <tr>
+                                    <td>${i.nombre}&nbsp;${i.apellido}</td>
+                                    <td></td> 
+                                    <td>
+                                        <select name="${i.id}" id="${i.id}">
                                             <option value="1">Equipo 1</option>
                                             <option value="2">Equipo 2</option>
                                         </select> 

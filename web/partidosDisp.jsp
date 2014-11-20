@@ -54,14 +54,14 @@
             <table>
             
                 <tr>
-                    <td><img src="img/pokemon-problems-pokeproblems-catch.jpg" width="200"/> <br>Usuario 1</td>
+                    <td><img src="img/doge.jpeg" width="200"/> <br>Usuario 1</td>
                     <td>${i.fecha} asdafd <br> ${i.hora} fadfe</td>
                     <td><input type="radio" name="tipoInscripcion" value="garantizado"/>Garantizado<br>
                     <input type="radio" name="tipoInscripcion" value="probable"/>Probable</td>
                     <td><a>Ver</a>&nbsp;|&nbsp;<a>Inscribirse</a></td>
                 </tr>
                 <tr>
-                    <td>${i.organizador.imagen}  <img src="img/pokemon-problems-pokeproblems-catch.jpg" width="200"/> <br>Usuario 2</td>
+                    <td>${i.organizador.imagen}  <img src="img/doge1.jpg" width="200"/> <br>Usuario 2</td>
                     <td>${i.fecha} asdafd <br> ${i.hora} fadfe</td>
                     <td><input type="radio" name="tipoInscripcion" value="garantizado"/>Garantizado<br>
                     <input type="radio" name="tipoInscripcion" value="probable"/>Probable</td>

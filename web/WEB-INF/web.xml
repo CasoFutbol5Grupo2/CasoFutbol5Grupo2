@@ -16,6 +16,10 @@
         <servlet-name>MiPerfilServlet</servlet-name>
         <servlet-class>edu.ulima.servlets.MiPerfilServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarCanchaDisponibleServlet</servlet-name>
+        <servlet-class>edu.ulima.servlets.BuscarCanchaDisponibleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CallbackServlet</servlet-name>
         <url-pattern>/callback</url-pattern>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarCanchaDisponibleServlet</servlet-name>
+        <url-pattern>/buscarCanchaDisponibleServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,54 +1,22 @@
 package edu.ulima.servlets;
 
-import edu.ulima.bean.Jugador;
 import edu.ulima.mongo.MongoDB;
-import facebook4j.Facebook;
-import facebook4j.FacebookException;
-import facebook4j.PictureSize;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class CallbackServlet extends HttpServlet {
+public class BuscarCanchaDisponibleServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MongoDB mongo = new MongoDB();
-        Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
-        String oauthCode = request.getParameter("code");
         
-        try {
-            System.out.println(oauthCode);
-            facebook.getOAuthAccessToken(oauthCode);
-            Jugador j;
-            if(mongo.buscarJugadorCorreo(facebook.getMe().getEmail())==null){
-                j = new Jugador();
-                j.setCorreo(facebook.getMe().getEmail());
-                j.setNombre(facebook.getName());
-                j.setFbid(facebook.getId());
-                j.setImagen(facebook.getPictureURL(PictureSize.large).toString());
-                
-                j = mongo.crearJugador(j);
-            }else{
-                j = mongo.buscarJugadorCorreo(facebook.getMe().getEmail());
-                j.setNombre(facebook.getName());
-                j.setFbid(facebook.getId());
-                j.setImagen(facebook.getPictureURL(PictureSize.large).toString());
-                mongo.actualizarJugador(j);
-                request.getSession().setAttribute("partidosOrganizados",mongo.partidosAdmin(j));
-            }
-            request.getSession().setAttribute("actual",j);
-            
-            request.getSession().setAttribute("fName", facebook.getName());
-            
-            
-        } catch (FacebookException e) {
-            throw new ServletException(e);
-        }
-        response.sendRedirect(request.getContextPath() + "/organizador.jsp");
+        MongoDB mongo = new MongoDB();
+        
+        
+        
         
     }
 
